@@ -23,6 +23,10 @@ function indexOf(array, value, fromIndex) {
 
   var length = array.length;
   if (length === 0) return -1;
+  
+  if (typeof fromIndex === 'symbol') {
+    fromIndex = 0;
+  }
 
   fromIndex = Number.parseInt(fromIndex);
   fromIndex = Number.isNaN(fromIndex) ? 0 : fromIndex;
@@ -55,9 +59,9 @@ function indexOf(array, value, fromIndex) {
 **步骤：**
 
 1. 判断当前的`array`参数是否为数组，并且判断该数组的长度；
-
-2. 对查询的起始位置值进行类型转换`fromIndex`，还要对改值进行`isNaN`的判断；如果当前值是负数，那么对`fromIndex`进行处理`fromIndex+数组长度`；
-3. `while`进行遍历，查询数组中是否存在需要查询的值，如果有返回该索引值，否则返回-1；
+2. 检查起始查询位置`fromIndex`的类型，如果是`symbol`数据类型，则赋值为0；
+3. 对查询的起始位置值进行类型转换`fromIndex`，还要对改值进行`isNaN`的判断；如果当前值是负数，那么对`fromIndex`进行处理`fromIndex+数组长度`；
+4. `while`进行遍历，查询数组中是否存在需要查询的值，如果有返回该索引值，否则返回-1；
 
 
 
